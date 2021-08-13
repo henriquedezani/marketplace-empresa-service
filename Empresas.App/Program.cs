@@ -8,11 +8,15 @@ namespace Empresas.App
         static void Main(string[] args)
         {
             // criando um objeto da classe Empresa (instância da classe).
-            Empresa objeto = new Empresa();
-            objeto.SetNome(args[0]);            
-            string nome = objeto.GetNome();
+            //new Empresa() = // método para instanciar a classe = construtor.
 
-            Console.WriteLine(nome);
+            Empresa empresa1 = new Empresa("Empresa 1"); 
+            Console.WriteLine(empresa1.GetNome());
+            Console.WriteLine(empresa1.GetSlug() ?? "NULO");
+
+            Empresa empresa2 = new Empresa("Empresa 2", "empresa_2");  // sobrecarga do construtor.
+            Console.WriteLine(empresa2.GetNome());
+            Console.WriteLine(empresa2.GetSlug() ?? "NULO");
         }
     }
 }
