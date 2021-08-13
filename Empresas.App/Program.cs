@@ -16,6 +16,8 @@ namespace Empresas.App
 
             Empresa empresa2 = new Empresa("Empresa 2", "empresa_2");  // sobrecarga do construtor.
             Console.WriteLine(empresa2.GetNome());
+            Console.WriteLine(empresa2.GetNome(true));
+            Console.WriteLine(empresa2.GetNome(false));
             Console.WriteLine(empresa2.GetSlug() ?? "NULO");
         }
     }
