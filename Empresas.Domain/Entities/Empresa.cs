@@ -2,26 +2,24 @@ namespace Empresas.Domain.Entities
 {
     public class Empresa 
     {
-        // estados (campos ou fields)
-        private string nome;
+        // propridade automática (campo + propriedade)
+        // public string Nome { get; private set; }
+        public string Nome { get; }
+        private string slug;
 
-        // comportamentos (métodos)
-        public void SetNome(string nome)
+        // construtor
+        public Empresa(string nome)
         {
-            // alterar o estado da classe (atributo nome)
-            this.nome = nome;
+            this.Nome = nome;
         }
 
-        public string GetNome()
-        {
-            return this.nome;
-        }
+        // propriedades:
+        // é o que o compilador gerará usando public string Nome {get; set;}
+        // private string nome;
+        // public string Nome
+        // {
+        //     get { return this.nome; } 
+        //     set { this.nome = value; }
+        // }
     }
 }
-
-
-
-// tipo_do_retorno nome_do_metodo (tipo1: argumento1, tipo2: argumento2, ...) {
-//   lógica do negócio...
-//   tipo_do_retorno != void = return
-//}
