@@ -16,7 +16,6 @@ namespace Empresas.App
                 Telefone = "(17) 123123123"
             };
 
-<<<<<<< HEAD
             Console.WriteLine(empresa1.Id); // get
             Console.WriteLine(empresa1.Nome); // get
             Console.WriteLine(empresa1.Endereco); // get
@@ -37,16 +36,6 @@ namespace Empresas.App
             {
                 Console.WriteLine(produto.Nome);
             }
-=======
-            // empresa1.Nome = "Minha empresa"; // set
-            // empresa1.Endereco = "Minha empresa"; // set
-            // empresa1.Telefone = "Minha empresa"; // set
-
-
-            Console.WriteLine(empresa1.Nome); // get
-            Console.WriteLine(empresa1.Endereco); // get
-            Console.WriteLine(empresa1.Telefone); // get
->>>>>>> parent of 303381f (Finaliza criação da entidade Empresa)
         }
     }
 }
