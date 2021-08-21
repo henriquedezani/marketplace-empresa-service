@@ -32,6 +32,12 @@ namespace Empresas.App
             Console.WriteLine(produto1.Preco);
             Console.WriteLine(produto1.Empresa.Nome);
 
+            Produto produto2 = new Produto(empresa1);
+            produto2.Nome = "fogão";
+            produto2.Preco = 700.50M; //M para decimal
+
+            Console.WriteLine("Produtos da Empresa 1");
+
             foreach (Produto produto in empresa1.Produtos)
             {
                 Console.WriteLine(produto.Nome);
