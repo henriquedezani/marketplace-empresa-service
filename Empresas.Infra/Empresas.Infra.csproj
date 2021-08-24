@@ -2,11 +2,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Empresas.Domain\Empresas.Domain.csproj" />
-    <ProjectReference Include="..\Empresas.Infra\Empresas.Infra.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 

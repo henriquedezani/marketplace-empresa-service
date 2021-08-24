@@ -1,5 +1,8 @@
 ﻿using System;
 using Empresas.Domain.Entities;
+using Empresas.Domain.Ports;
+using Empresas.Domain.Services;
+using Empresas.Infra.Repositories;
 
 namespace Empresas.App
 {
@@ -7,40 +10,38 @@ namespace Empresas.App
     {
         static void Main(string[] args)
         {
-            // criando um objeto da classe Empresa (instância da classe).
-            //new Empresa() = // método para instanciar a classe = construtor.
+            IEmpresaRepository repository = new EmpresaRepository();
+            IEmpresaService empresaService = new EmpresaService(repository);
 
-            Empresa empresa1 = new Empresa() {
-                Nome = "Empresa 1",
-                Endereco = "Rua ABC",
-                Telefone = "(17) 123123123"
-            };
+            Empresa empresa1 = new Empresa();
+            empresa1.Id = 1;
+            empresa1.Nome = "Empresa 1";
+            empresa1.Slug = "empresa1";
 
-            Console.WriteLine(empresa1.Id); // get
-            Console.WriteLine(empresa1.Nome); // get
-            Console.WriteLine(empresa1.Endereco); // get
-            Console.WriteLine(empresa1.Telefone); // get
-            Console.WriteLine(empresa1.Slug); // get
+            Empresa empresaCriada = empresaService.CriaUmEmpresa(empresa1);
 
-            Produto produto1 = new Produto(empresa1);
-            produto1.Nome = "geladeira";
-            produto1.Preco = 1000.50M; //M para decimal
+            if(empresaCriada != null) 
+                Console.WriteLine("Empresa criada com sucesso");
+            else
+                Console.WriteLine("Já existe uma empresa com este slug");
 
-            //empresa1.Produtos.Add(produto1); //NÃO FAZER DESSA MANEIRA!
+            Empresa empresa2 = new Empresa();
+            empresa2.Id = 1;
+            empresa2.Nome = "Empresa 2";
+            empresa2.Slug = "empresa2";
 
-            Console.WriteLine(produto1.Nome);
-            Console.WriteLine(produto1.Preco);
-            Console.WriteLine(produto1.Empresa.Nome);
+            Empresa empresaCriada2 = empresaService.CriaUmEmpresa(empresa2);
 
-            Produto produto2 = new Produto(empresa1);
-            produto2.Nome = "fogão";
-            produto2.Preco = 700.50M; //M para decimal
+            if(empresaCriada2 != null) 
+                Console.WriteLine("Empresa criada com sucesso");
+            else 
+                Console.WriteLine("Já existe uma empresa com este slug");
 
-            Console.WriteLine("Produtos da Empresa 1");
 
-            foreach (Produto produto in empresa1.Produtos)
-            {
-                Console.WriteLine(produto.Nome);
+            var lista = empresaService.ObtemTodasAsEmpresas();
+
+            foreach(var empresa in lista) {
+                Console.WriteLine(empresa.Nome);
             }
         }
     }
